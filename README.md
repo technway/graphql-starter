@@ -26,9 +26,10 @@ The theme is **read-only**, ensuring enhanced security and simplicity by disabli
   - [Prerequisites](#prerequisites)
   - [Steps](#steps)
 - [Directory Structure](#directory-structure)
-  - [Core Directory](#core-directory)
-  - [Docs Directory](#docs-directory)
-- [Testing GraphQL Directory](#testing-graphql-directory)
+  - [`includes/` Directory](#includes-directory)
+    - [`core/` Directory](#core-directory)
+  - [`docs/` Directory](#docs-directory)
+  - [`testing-graphql/` Directory](#testing-graphql-directory)
 - [Usage](#usage)
 - [Theme Renaming](#theme-renaming)
   - [Script Usage](#script-usage)
@@ -109,13 +110,16 @@ graphql-starter/
 ├── style.css                  # Theme information and styles
 ```
 
-### Core Directory
+### `includes/` Directory
+The `includes/` directory contains the core classes used to register custom post types (CPTs) and custom fields (CFs). These classes simplify the process of creating and managing CPTs and CFs within the theme. It also contains the `custom-fields.php` and `post-types.php` files, which are used to register custom fields and post types respectively.
+
+#### `core/` Directory
 The `core/` directory contains the reusable classes used to register custom post types (CPTs) and custom fields (CFs). These classes simplify the process of creating and managing CPTs and CFs within the theme.
 
-### Docs Directory
+### `docs/` Directory
 The `docs/` directory contains additional detailed documentation files about the theme, its architecture, and usage examples. Refer to [`docs/usage.md`](docs/usage.md) for more information on registering custom post types and custom fields.
 
-## Testing GraphQL Directory
+### `testing-graphql/` Directory
 The `testing-graphql/` directory contains a `.http` file for testing GraphQL queries. Refer to [`testing-graphql.md`](testing-graphql/testing-graphql.md) for more information on testing GraphQL queries.
 
 ---
