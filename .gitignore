@@ -1,0 +1,44 @@
+# Ignore temporary files, logs, and caches
+*.log
+*.tmp
+*.temp
+*.cache
+*.bak
+*.swp
+*.swo
+*.sql
+
+# Ignore Composer and Node.js dependencies
+/vendor/
+node_modules/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# Ignore build and deployment files
+/build/
+dist/
+*.env
+.env.*
+*.local
+*.env.local
+*.test
+*.env.test
+!.env.example
+
+# Other files
+debug.log
+wp-config-sample.php
+sitemap.xml
+sitemap-*.xml
+
+# Ignore any sensitive data backups
+*.sql.gz
+*.tar.gz
+*.zip
+*.rar

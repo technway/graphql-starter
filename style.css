@@ -1,0 +1,19 @@
+/*!
+Theme Name: GraphQL Starter Theme
+Theme URI: https://technway.com/
+Author: Technway
+Author URI: https://technway.com/
+Description: TNW GraphQL Starter is a specialized WordPress theme designed to function purely as a headless GraphQL API endpoint. It strips away all frontend rendering and traditional WordPress theme features, focusing solely on providing a clean, efficient GraphQL API interface.
+Version: 1.0.0
+Tested up to: 7.4
+Tested with PHP: 8.2.4
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: graphql-starter
+Tags: headless, GraphQL, backend-only, lightweight
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+graphql-starter is based on `GraphQL Starter` `https://github.com/technway/graphql-starter`, (C) 2025 Technway.
+*/
