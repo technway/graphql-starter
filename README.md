@@ -30,9 +30,8 @@ The theme is **read-only**, ensuring enhanced security and simplicity by disabli
   - [Docs Directory](#docs-directory)
 - [Testing GraphQL Directory](#testing-graphql-directory)
 - [Usage](#usage)
-  - [Example Query](#example-query)
 - [Theme Renaming](#theme-renaming)
-  - [Usage](#usage-1)
+  - [Script Usage](#script-usage)
 - [License](#license)
 - [Support](#support)
 - [Credits](#credits)
@@ -123,31 +122,14 @@ The `testing-graphql/` directory contains a `.http` file for testing GraphQL que
 
 ## Usage
 
-This theme is designed to provide a GraphQL API endpoint for your WordPress site. It focuses on read-only operations and does not include any frontend rendering. You can use this API to:
-
-- Query posts, custom fields, and other WordPress data
-- Integrate with headless frontend frameworks such as React, Vue, or Angular
-
-### Example Query
-Use the following query with your WPGraphQL API:
-```graphql
-{
-  posts {
-    nodes {
-      id
-      title
-      content
-    }
-  }
-}
-```
+Read the [`usage.md`](docs/usage.md) file for more information on registering custom post types and custom fields.
 
 ---
 
 ## Theme Renaming
 Use the `rename-theme.php` script to rename the theme. The script updates all references across relevant files while preserving formatting.
 
-### Usage
+### Script Usage
 Run the script from the root of the theme directory:
 ```bash
 php ./scripts/rename-theme.php "Your New Theme Name"
