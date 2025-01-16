@@ -33,7 +33,7 @@ function graphql_starter_setup()
 {
     // Enable support for Post Thumbnails (featured images).
     add_theme_support('post-thumbnails');
-    
+
     /**
      * Register navigation menus.
      * 
@@ -71,8 +71,18 @@ add_action('after_setup_theme', function () {
  */
 function graphql_starter_redirect_frontend()
 {
-    // Don't redirect admin or GraphQL requests
-    if (function_exists('is_admin') && (is_admin() || defined('GRAPHQL_REQUEST'))) {
+    // Add debug logging
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        error_log('GraphQL Redirect Check - Starting');
+    }
+
+    // Don't redirect REST API requests
+    if (defined('REST_REQUEST') && REST_REQUEST) {
+        return;
+    }
+
+    // Don't redirect admin, AJAX, or GraphQL requests
+    if (is_admin() || wp_doing_ajax() || defined('GRAPHQL_REQUEST')) {
         return;
     }
 
@@ -81,22 +91,33 @@ function graphql_starter_redirect_frontend()
         return;
     }
 
-    // Get the current URL
-    $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    // Don't redirect login/register pages
+    $no_redirect_pages = [
+        'wp-login.php',
+        'wp-register.php'
+    ];
 
-    // Get the site URL without path
-    if (function_exists('get_site_url')) {
-        $site_url = get_site_url(null, '', 'http');
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-            $site_url = str_replace('http://', 'https://', $site_url);
-        }
-
-        // If this is a frontend request, redirect to /graphql
-        if (strpos($current_url, '/graphql') === false && function_exists('wp_redirect')) {
-            wp_redirect($site_url . '/graphql');
-            exit;
-        }
+    if (str_replace($no_redirect_pages, '', $_SERVER['PHP_SELF']) != $_SERVER['PHP_SELF']) {
+        return;
     }
+
+    // Get the current URL path
+    $current_path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+
+    // Don't redirect if already on graphql endpoint
+    if ($current_path === 'graphql') {
+        return;
+    }
+
+    // Get the site URL
+    $graphql_url = home_url('/graphql');
+
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        error_log('GraphQL Redirect - Redirecting to: ' . $graphql_url);
+    }
+
+    wp_redirect($graphql_url);
+    exit;
 }
 add_action('template_redirect', 'graphql_starter_redirect_frontend');
 
