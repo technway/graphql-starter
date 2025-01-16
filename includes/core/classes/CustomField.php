@@ -154,16 +154,16 @@ class CustomField
      */
     private static function setupMetaBox($args)
     {
-        add_action('add_meta_boxes', function () use ($validated_args) {
-            foreach ($validated_args['post_types'] as $post_type) {
+        add_action('add_meta_boxes', function () use ($args) {
+            foreach ($args['post_types'] as $post_type) {
                 add_meta_box(
-                    $validated_args['id'],
-                    $validated_args['title'],
+                    $args['id'],
+                    $args['title'],
                     [self::class, 'renderField'],
                     $post_type,
-                    $validated_args['context'],
-                    $validated_args['priority'],
-                    $validated_args
+                    $args['context'],
+                    $args['priority'],
+                    $args
                 );
             }
         });
@@ -208,7 +208,7 @@ class CustomField
      */
     private static function setupGraphQL($args)
     {
-        
+
         if (empty($args['show_in_graphql'])) {
             // error_log('CustomField::setupGraphQL: show_in_graphql is false');
             return;
