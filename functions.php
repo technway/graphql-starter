@@ -9,6 +9,14 @@
  * @package GraphQL_Starter
  */
 
+// Load WPGraphQL setup
+require_once get_template_directory() . '/includes/core/graphql/graphql-setup.php';
+
+// Stop loading if WPGraphQL is missing
+if (defined('WPGRAPHQL_IS_MISSING')) {
+    return;
+}
+
 // Define the theme version
 if (! defined('_GRAPHQL_STARTER_VERSION')) {
     define('_GRAPHQL_STARTER_VERSION', '1.0.0');
@@ -79,7 +87,6 @@ add_action('template_redirect', 'graphql_starter_redirect_frontend');
  * Include required files
  */
 $required_files = [
-    '/includes/core/graphql/graphql-setup.php',
     '/includes/core/bootstrap/cpt-bootstrap.php',
     '/includes/core/bootstrap/cf-bootstrap.php',
     '/includes/post-types.php',
