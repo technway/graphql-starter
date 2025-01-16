@@ -23,12 +23,29 @@ if (! defined('_GRAPHQL_STARTER_VERSION')) {
 }
 
 /**
- * Basic theme setup for GraphQL Starter
+ * Basic theme setup for GraphQL Starter.
+ * 
+ * This function sets up core theme features like support for post thumbnails 
+ * and registering navigation menus. These features enable essential functionality 
+ * for the theme and its integration with WordPress.
  */
 function graphql_starter_setup()
 {
-    // Enable support for Post Thumbnails 
+    // Enable support for Post Thumbnails (featured images).
     add_theme_support('post-thumbnails');
+    
+    /**
+     * Register navigation menus.
+     * 
+     * This function declares menu locations, enabling assigning menus 
+     * in the WordPress admin under Appearance > Menus. The registered locations 
+     * are 'primary-menu' and 'footer-menu', which are intended for the 
+     * primary navigation and footer navigation, respectively.
+     */
+    register_nav_menus(array(
+        'primary-menu' => __('Primary Menu', 'graphql-starter'), // Main navigation menu.
+        'footer-menu'  => __('Footer Menu', 'graphql-starter')  // Footer navigation menu.
+    ));
 }
 add_action('after_setup_theme', 'graphql_starter_setup');
 
