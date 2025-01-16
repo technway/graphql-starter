@@ -79,9 +79,9 @@ add_action('template_redirect', 'graphql_starter_redirect_frontend');
  * Include required files
  */
 $required_files = [
-    '/includes/core/graphql-setup.php',
-    '/includes/core/custom-post-type-bootstrap.php',
-    '/includes/core/custom-fields-bootstrap.php',
+    '/includes/core/graphql/graphql-setup.php',
+    '/includes/core/bootstrap/cpt-bootstrap.php',
+    '/includes/core/bootstrap/cf-bootstrap.php',
     '/includes/post-types.php',
     '/includes/custom-fields.php',
 ];
