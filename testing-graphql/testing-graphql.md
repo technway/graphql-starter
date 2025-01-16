@@ -54,7 +54,7 @@ Content-Type: application/json
 
 ## How to Run the Queries
 
-1. Open the `queries.http` file in Visual Studio Code.
+1. Open or create a `.http` file in Visual Studio Code.
 2. Make sure the `.env` file is correctly set up with the `BASE_URL`.
 3. Click on the **Send Request** link above each query in the `.http` file. The REST Client will execute the request and display the response in the results pane.
 4. Ensure that the response returns the expected data.

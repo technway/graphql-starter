@@ -1,0 +1,15 @@
+# Read the testing-graphql.md file for more information
+
+@baseURL = {{$dotenv BASE_URL}}
+
+# Note: This query will only work if:
+# 1. There are published pages in WordPress
+# 2. The pages are publicly queryable
+
+### Get Pages
+POST {{baseURL}}/graphql HTTP/1.1
+Content-Type: application/json
+
+{
+  "query": "query { pages { nodes { id title content } } }"
+}
