@@ -15,4 +15,10 @@ jobs:
               with:
                   release-type: php
                   package-name: graphql-starter
-                  initial-version: "0.1.0"
+                  changelog-types: |
+                      [
+                        {"type":"feat","section":"Features","hidden":false},
+                        {"type":"fix","section":"Bug Fixes","hidden":false},
+                        {"type":"perf","section":"Performance","hidden":false},
+                        {"type":"security","section":"Security","hidden":false}
+                      ]
