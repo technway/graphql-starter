@@ -1,13 +1,13 @@
 <div align="center">
 
-![GraphQL Starter Logo](https://i.ibb.co/QMrspvp/graphql-starter-logo.png)
+<img src="https://i.ibb.co/QMrspvp/graphql-starter-logo.png" alt="GraphQL Starter Logo">
 <h1>GraphQL Starter</h1>
 
-The **GraphQL Starter Theme** is a specialized headless WordPress theme designed to function purely as a GraphQL API endpoint. It eliminates traditional frontend rendering and focuses solely on providing a clean and efficient GraphQL API interface.
+<p>The <strong>GraphQL Starter Theme</strong> is a specialized headless WordPress theme designed to function purely as a GraphQL API endpoint. It eliminates traditional frontend rendering and focuses solely on providing a clean and efficient GraphQL API interface.</p>
 
-[![WordPress](https://img.shields.io/badge/WordPress-6.7-blue.svg)](https://wordpress.org/)
-[![PHP](https://img.shields.io/badge/PHP-7.2+-purple.svg)](https://php.net/)
-[![License](https://img.shields.io/badge/license-GPL--2.0-green.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
+<a href="https://wordpress.org/"><img src="https://img.shields.io/badge/WordPress-6.7-blue.svg" alt="WordPress"></a>
+<a href="https://php.net/"><img src="https://img.shields.io/badge/PHP-7.2+-purple.svg" alt="PHP"></a>
+<a href="https://www.gnu.org/licenses/gpl-2.0.html"><img src="https://img.shields.io/badge/license-GPL--2.0-green.svg" alt="License"></a>
 
 </div>
 
@@ -34,7 +34,7 @@ The **GraphQL Starter Theme** is a specialized headless WordPress theme designed
 - [Credits](#credits)
 
 
-This lightweight and secure solution is ideal for:
+**This lightweight and secure solution is ideal for:**
 - Public content APIs
 - Headless frontend applications
 - Scenarios where content management is handled through the WordPress admin interface
