@@ -67,18 +67,15 @@ add_action('after_setup_theme', function () {
 });
 
 /**
- * Redirect all frontend requests to /graphql
+ * Redirect all frontend requests and REST API requests to wp-admin
+ * 
+ * @return void
  */
-function graphql_starter_redirect_frontend()
+function graphql_starter_redirect_frontend() 
 {
     // Add debug logging
     if (defined('WP_DEBUG') && WP_DEBUG) {
-        error_log('GraphQL Redirect Check - Starting');
-    }
-
-    // Don't redirect REST API requests
-    if (defined('REST_REQUEST') && REST_REQUEST) {
-        return;
+        error_log('Admin Redirect Check - Starting');
     }
 
     // Don't redirect admin, AJAX, or GraphQL requests
@@ -91,35 +88,47 @@ function graphql_starter_redirect_frontend()
         return;
     }
 
-    // Don't redirect login/register pages
+    // Don't redirect login/register pages and other essential WP pages
     $no_redirect_pages = [
         'wp-login.php',
-        'wp-register.php'
+        'wp-register.php', 
+        'wp-admin/',
     ];
 
-    if (str_replace($no_redirect_pages, '', $_SERVER['PHP_SELF']) != $_SERVER['PHP_SELF']) {
+    // Use a more secure server variable comparison
+    $script_name = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : $_SERVER['PHP_SELF'];
+    $script_name = filter_var($script_name, FILTER_SANITIZE_URL);
+
+    foreach ($no_redirect_pages as $page) {
+        if (strpos($script_name, $page) !== false) {
+            return;
+        }
+    }
+
+    // Get and sanitize the current URL path
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+    $current_path = trim(parse_url(
+        filter_var($request_uri, FILTER_SANITIZE_URL),
+        PHP_URL_PATH
+    ), '/');
+
+    // Don't redirect if already on admin
+    if ($current_path === 'wp-admin') {
         return;
     }
 
-    // Get the current URL path
-    $current_path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-
-    // Don't redirect if already on graphql endpoint
-    if ($current_path === 'graphql') {
-        return;
-    }
-
-    // Get the site URL
-    $graphql_url = home_url('/graphql');
+    // Perform safe redirect with nonce
+    $admin_url = wp_nonce_url(admin_url(), 'graphql_starter_redirect');
 
     if (defined('WP_DEBUG') && WP_DEBUG) {
-        error_log('GraphQL Redirect - Redirecting to: ' . $graphql_url);
+        error_log('Admin Redirect - Redirecting to: ' . $admin_url);
     }
 
-    wp_redirect($graphql_url);
+    wp_safe_redirect($admin_url, 302);
     exit;
 }
 add_action('template_redirect', 'graphql_starter_redirect_frontend');
+add_action('rest_api_init', 'graphql_starter_redirect_frontend');
 
 /**
  * Include required files
