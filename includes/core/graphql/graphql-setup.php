@@ -68,3 +68,8 @@ if (! class_exists('\WPGraphQL')) {
 if (defined('GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED') && GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED) {
     require_once get_template_directory() . '/includes/core/graphql/graphql-pagination.php';
 }
+
+// Load Like Posts GraphQL if enabled
+if (defined('GRAPHQL_STARTER_LIKE_POSTS_ENABLED') && GRAPHQL_STARTER_LIKE_POSTS_ENABLED) {
+    require_once get_template_directory() . '/includes/core/graphql/like-posts-graphql.php';
+}
