@@ -106,7 +106,6 @@ graphql-starter/                   # Root directory of the theme
 │   ├── example.http               # Example HTTP requests for GraphQL queries
 │   ├── testing-graphql.md         # Documentation for testing GraphQL
 ├── docs/                          # Documentation files for the theme
-│   ├── usage.md                   # How to use the theme and its features
 ├── functions.php                  # Main WordPress functions file
 ├── index.php                      # Empty index file
 ```
@@ -127,7 +126,8 @@ The `testing-graphql/` directory contains a `.http` file for testing GraphQL que
 
 ## Usage
 
-Read the [`usage.md`](docs/usage.md) file for more information on registering custom post types and custom fields.
+- Read the [`custom-post-types.md`](docs/custom-post-types.md) file for more information on registering custom post types.
+- Read the [`custom-fields.md`](docs/custom-fields.md) file for more information on registering custom fields.
 
 ---
 

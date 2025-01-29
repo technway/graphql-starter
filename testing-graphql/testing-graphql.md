@@ -5,14 +5,14 @@ This document provides instructions for testing GraphQL queries using the `.http
 ## Prerequisites
 
 - Install the **REST Client** extension for VS Code.
-- Ensure you have a `.env` file containing the base URL for your GraphQL server, defined as `BASE_URL`.
+- Ensure you have a `.env` file containing the base URL for your GraphQL server, defined as `WP_BASE_URL`.
 
 ## Environment Variable Setup
 
-To use the environment variable `BASE_URL` in your `.http` file, you need to define it in your `.env` file. Make sure your `.env` file includes:
+To use the environment variable `WP_BASE_URL` in your `.http` file, you need to define it in your `.env` file. Make sure your `.env` file includes:
 
 ```dotenv
-BASE_URL=http://your-graphql-server-url
+WP_BASE_URL=http://your-graphql-server-url
 ```
 
 Replace `http://your-graphql-server-url` with the actual GraphQL server Base URL.
@@ -55,7 +55,7 @@ Content-Type: application/json
 ## How to Run the Queries
 
 1. Open or create a `.http` file in Visual Studio Code.
-2. Make sure the `.env` file is correctly set up with the `BASE_URL`.
+2. Make sure the `.env` file is correctly set up with the `WP_BASE_URL`.
 3. Click on the **Send Request** link above each query in the `.http` file. The REST Client will execute the request and display the response in the results pane.
 4. Ensure that the response returns the expected data.
 
@@ -65,9 +65,8 @@ If there are any errors in the query, they will be displayed in the `errors` fie
 
 If you're encountering issues, here are a few things to check:
 
-- Ensure the `BASE_URL` is set correctly in the `.env` file.
-- Check the GraphQL server for any authentication or CORS issues that may prevent successful queries.
-- Do not try to break lines in the query. For example, do not do this:
+- Ensure the `WP_BASE_URL` is set correctly in the `.env` file.
+- Do not try to break lines in the query. For example, **don't do this**:
 ```http
 {
   "query": "query {
@@ -81,7 +80,7 @@ If you're encountering issues, here are a few things to check:
     }"
 }
 ```
-Instead, do this:
+**Instead, do this:**
 ```http
 {
   "query": "query { posts { nodes { id title content } } }"
