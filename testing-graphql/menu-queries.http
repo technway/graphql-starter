@@ -1,18 +1,18 @@
-# Read the testing-graphql.md file for more information
+# Read the testing-graphql.md file to learn how to run the queries or add new tests
 
-@baseURL = {{$dotenv BASE_URL}}
+@baseURL = {{$dotenv WP_BASE_URL}}
 
 # Note: These queries will only work if:
 # 1. Menus are created in WordPress Admin (Appearance > Menus)
 # 2. Menus are assigned to the location: Primary Menu
 # 3. Menu items are added to the menus
 
-### Get All Menus
-POST {{baseURL}}/graphql HTTP/1.1
+### Get Menus
+POST {{baseURL}}/graphql
 Content-Type: application/json
 
 {
-  "query": "query { menus { nodes { id databaseId name menuItems { edges { node { id label parentId } } } } } }"
+    "query": "query GetMenus { menus { nodes { id name } } }"
 }
 
 ### Get Menu Items by Location

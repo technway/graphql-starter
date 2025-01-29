@@ -1,14 +1,16 @@
-@baseURL = {{$dotenv BASE_URL}}
+# Read the testing-graphql.md file to learn how to run the queries or add new tests
+
+@baseURL = {{$dotenv WP_BASE_URL}}
 
 # Note: This query will only work if:
 # 1. The "projects" Custom Post Type is registered in your WordPress installation
 # 2. The CPT is enabled for GraphQL in the post type registration
 # 3. There are actual project posts created in WordPress
 
-### Get Projects (Custom Post Type)
-POST {{baseURL}}/graphql HTTP/1.1
+### Get Custom Post Types
+POST {{baseURL}}/graphql
 Content-Type: application/json
 
 {
-  "query": "query { projects { nodes { id title content } } }"
+    "query": "query GetCustomPosts { contentTypes { nodes { name } } }"
 }

@@ -1,17 +1,18 @@
-# Read the testing-graphql.md file for more information
+# Read the docs/blog-posts.md file for more information
+# Read the testing-graphql.md file to learn how to run the queries or add new tests
 
-@baseURL = {{$dotenv BASE_URL}}
+@baseURL = {{$dotenv WP_BASE_URL}}
 
 # Note: This query will only work if:
 # 1. There are published posts in WordPress
 # 2. The posts are publicly queryable
 
-### Get Posts
-POST {{baseURL}}/graphql HTTP/1.1
+### Get All Posts
+POST {{baseURL}}/graphql
 Content-Type: application/json
 
 {
-  "query": "query { posts { nodes { id title content } } }"
+    "query": "query GetPosts { posts { nodes { id title content } } }"
 }
 
 ### Get Post By Id
