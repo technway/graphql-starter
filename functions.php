@@ -10,6 +10,16 @@
  */
 
 /**
+ * Define if posts likes functionality is enabled. Default is false.
+ * 
+ * This constant controls whether the post likes system is active.
+ * When enabled (true), like/unlike queries and mutations are enabled.
+ * 
+ * read docs/blog-posts.md for more information.
+ */
+define('GRAPHQL_STARTER_LIKE_POSTS_ENABLED', true);
+
+/**
  * Define if post count functionality is enabled. Default is true.
  * 
  * This constant controls whether the total pages count is available in GraphQL queries.

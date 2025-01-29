@@ -10,6 +10,7 @@ This documentation covers the blog features integrated with the **GraphQL Starte
 - [Comments](#comments)
   - [Add Comment](#add-comment)
   - [Get Post Comments](#get-post-comments)
+  - [Testing](#testing)
 - [Paginate Posts](#paginate-posts)
   - [Understanding Cursor Pagination](#understanding-cursor-pagination)
   - [Basic Pagination Flow](#basic-pagination-flow)
@@ -19,6 +20,18 @@ This documentation covers the blog features integrated with the **GraphQL Starte
     - [Important Notes:](#important-notes)
     - [Error Cases:](#error-cases)
   - [Common Patterns](#common-patterns)
+  - [Testing](#testing-1)
+- [Like/Unlike Posts](#likeunlike-posts)
+  - [Features](#features)
+  - [GraphQL Queries](#graphql-queries)
+    - [Get Posts with Like Count](#get-posts-with-like-count)
+  - [Get Single Post with Like Count](#get-single-post-with-like-count)
+  - [Toggle Post Like](#toggle-post-like)
+  - [Security Features](#security-features)
+  - [Anonymous Users](#anonymous-users)
+  - [Like Count Storage](#like-count-storage)
+  - [Testing](#testing-2)
+  - [Cookie Format](#cookie-format)
 
 ## Main Posts Queries
 
@@ -187,6 +200,11 @@ query GetPostComments($id: ID!) {
     "id": 1  # Post Database ID
 }
 ```
+
+### Testing
+
+Test endpoints using the provided HTTP files:
+- `testing-graphql/blog-posts/post-comment.http`
 
 ---
 
@@ -399,4 +417,124 @@ window.addEventListener('scroll', () => {
 >
     {hasNextPage ? 'Load More' : 'No More Posts'}
 </button>
+```
+
+### Testing
+
+Test endpoints using the provided HTTP files:
+- `testing-graphql/blog-posts/post-paginations.http`
+
+---
+
+## Like/Unlike Posts
+
+To enable the like posts functionality, you need to define the `GRAPHQL_STARTER_LIKE_POSTS_ENABLED` constant in the `functions.php` file.
+
+```php
+define('GRAPHQL_STARTER_LIKE_POSTS_ENABLED', true);
+```
+
+### Features
+
+- Mutation to toggle post like with anonymous user support
+- Query to get most liked posts
+- Query to get posts with like count
+- Query to get single post with like count
+
+### GraphQL Queries
+
+#### Get Posts with Like Count
+```graphql
+# Query
+query GetPostsWithLikes($first: Int!) {
+    posts(first: $first) {
+        nodes {
+            databaseId
+            title
+            likeCount
+        }
+    }
+}
+
+# Variables
+{
+    "first": 2
+}
+```
+
+### Get Single Post with Like Count
+```graphql
+# Query
+query GetSinglePost($id: ID!) {
+    post(id: $id, idType: DATABASE_ID) {
+        databaseId
+        title
+        likeCount
+    }
+}
+
+# Variables
+{
+    "id": "cG9zdDox"
+}
+```
+
+### Toggle Post Like
+Toggling a post like is done using the `toggleLike` mutation. It does not require authentication.
+
+```graphql
+mutation TogglePostLike($postId: ID!) {
+    toggleLike(input: {id: $postId}) {
+        post {
+            databaseId
+            likeCount
+        }
+    }
+}
+
+# Variables
+{
+    "postId": "cG9zdDox"
+}
+```
+
+### Security Features
+
+- Rate limiting for like actions
+- Cookie-based anonymous user tracking
+- Duplicate like prevention
+- Safe integer operations for like counts for same cookie or logged in user
+- Input validation and sanitization
+
+### Anonymous Users
+
+Anonymous users are tracked using cookies:
+- Cookie name: `wp_anonymous_id`
+- Duration: 30 days
+- Secure flags enabled
+- HttpOnly and SameSite protection
+
+### Like Count Storage
+
+Like counts are stored in post meta:
+- Meta key: `_like_count`
+- Accessible via GraphQL
+- Automatically increments/decrements
+
+### Testing
+
+Test endpoints using the provided HTTP files:
+- `testing-graphql/blog-posts/posts-like-queries.http`
+- `testing-graphql/blog-posts/toggle-like-mutations.http`
+
+### Cookie Format
+```json
+{
+    "name": "wp_anonymous_id",
+    "value": "anon_[hash]",
+    "path": "/",
+    "secure": true,
+    "httpOnly": true,
+    "sameSite": "Strict"
+}
 ```

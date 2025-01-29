@@ -1,0 +1,29 @@
+# Read the docs/blog-posts.md file for more information
+# Read the testing-graphql.md file to learn how to run the queries or add new tests
+
+# If you got `"message": "Cannot query field \"likeCount\" on type \"Post\"."` error,
+# you need to enable the `define('GRAPHQL_STARTER_LIKE_POSTS_ENABLED', true);` in the functions.php file.
+
+@baseURL = {{$dotenv WP_BASE_URL}}
+
+### Get Full Posts with Likes (After fields are registered)
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPostsWithLikes($first: Int!) { posts(first: $first) { nodes { databaseId title likeCount } } }",
+    "variables": {
+        "first": 2
+    }
+}
+
+### Get Single Post with Likes
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetSinglePost($id: ID!) { post(id: $id, idType: DATABASE_ID) { databaseId title likeCount } }",
+    "variables": {
+        "id": "1"
+    }
+}
