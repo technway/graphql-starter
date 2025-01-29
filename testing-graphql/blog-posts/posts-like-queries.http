@@ -6,7 +6,15 @@
 
 @baseURL = {{$dotenv WP_BASE_URL}}
 
-### Get Full Posts with Likes (After fields are registered)
+### Get Full Posts with Likes
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetAllPostsWithLikes { posts { nodes { databaseId title likeCount } } }"
+}
+
+### Get Full Posts with Likes (Only 2 posts)
 POST {{baseURL}}/graphql
 Content-Type: application/json
 
