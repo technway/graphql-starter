@@ -7,6 +7,9 @@ This documentation covers the blog features integrated with the **GraphQL Starte
   - [Get Posts](#get-posts)
   - [Get Single Post](#get-single-post)
   - [Search Posts](#search-posts)
+- [Comments](#comments)
+  - [Add Comment](#add-comment)
+  - [Get Post Comments](#get-post-comments)
 
 ## Main Posts Queries
 
@@ -112,5 +115,66 @@ query SearchPosts($search: String!) {
 # Variables
 {
     "search": "Hello"
+}
+```
+
+## Comments
+
+The GraphQL Starter theme provides functionality to work with post comments. Here are the available queries and mutations:
+
+### Add Comment
+To add a comment to a post, use the `createComment` mutation:
+
+```graphql
+# Query
+mutation AddComment($input: CreateCommentInput!) {
+    createComment(input: $input) {
+        success
+        comment {
+            id
+            content
+            date
+            author {
+                node {
+                    name
+                }
+            }
+        }
+    }
+}
+
+# Variables
+{
+    "input": {
+        "commentOn": 1, # Post Database ID to comment on
+        "content": "Great post!",
+        "author": "John Doe",
+        "authorEmail": "john@example.com"
+    }
+}
+```
+
+### Get Post Comments
+To get comments for a specific post:
+
+```graphql
+# Query
+query GetPostComments($id: ID!) {
+    post(id: $id, idType: DATABASE_ID) {
+        id
+        title
+        comments(first: 100) {
+            nodes {
+            id
+            content
+            parentId
+            }
+        }
+    }
+}
+
+# Variables
+{
+    "id": 1  # Post Database ID
 }
 ```

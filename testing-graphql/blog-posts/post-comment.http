@@ -1,0 +1,31 @@
+# Read the docs/blog-posts.md file for more information
+# Read the testing-graphql.md file to learn how to run the queries or add new tests
+
+@baseURL = {{$dotenv WP_BASE_URL}}
+
+### Add Comment to Post
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "mutation AddComment($input: CreateCommentInput!) { createComment(input: $input) { success comment { id content date author { node { name } } } } }",
+    "variables": {
+        "input": {
+            "commentOn": 1,
+            "content": "Great post!",
+            "author": "John Doe", 
+            "authorEmail": "john@example.com"
+        }
+    }
+}
+
+### Get Post Comments
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPostComments($id: ID!) { post(id: $id, idType: DATABASE_ID) { id title comments(first: 100) { nodes { id content parentId } } } }",
+    "variables": {
+        "id": 1
+    }
+}
