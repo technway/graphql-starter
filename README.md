@@ -126,6 +126,7 @@ The `testing-graphql/` directory contains a `.http` file for testing GraphQL que
 
 ## Usage
 
+- Read the [`blog-posts.md`](docs/blog-posts.md) file for more information on get posts in different scenarios and getting or toggling likes.
 - Read the [`custom-post-types.md`](docs/custom-post-types.md) file for more information on registering custom post types.
 - Read the [`custom-fields.md`](docs/custom-fields.md) file for more information on registering custom fields.
 
