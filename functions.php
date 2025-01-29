@@ -78,6 +78,11 @@ function graphql_starter_redirect_frontend()
         error_log('Admin Redirect Check - Starting');
     }
 
+    // Don't redirect rest api requests
+    if (defined('REST_REQUEST')) {
+        return;
+    }
+
     // Don't redirect admin, AJAX, or GraphQL requests
     if (is_admin() || wp_doing_ajax() || defined('GRAPHQL_REQUEST')) {
         return;
