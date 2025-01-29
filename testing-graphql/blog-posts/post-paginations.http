@@ -1,0 +1,65 @@
+# Read the docs/blog-posts.md file for more information
+# Read the testing-graphql.md file to learn how to run the queries or add new tests
+
+@baseURL = {{$dotenv WP_BASE_URL}}
+
+# Note: These queries will only work if:
+# 1. There are published posts in WordPress
+# 2. The posts are publicly queryable
+
+### Get Posts with Page Count
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPaginatedPosts($first: Int!) { posts(first: $first) { nodes { id title } pageInfo { hasNextPage endCursor } } }",
+    "variables": {
+        "first": 1
+    }
+}
+
+### Get First Page (1 post per page)
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPaginatedPosts($first: Int!) { posts(first: $first) { nodes { id title excerpt } pageInfo { hasNextPage endCursor } } }",
+    "variables": {
+        "first": 1
+    }
+}
+
+### Get Second Page (1 post per page)
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPaginatedPosts($first: Int!, $after: String) { posts(first: $first, after: $after) { nodes { id title excerpt } pageInfo { hasNextPage endCursor } } }",
+    "variables": {
+        "first": 1,
+        "after": "YXJyYXljb25uZWN0aW9uOjYy"
+    }
+}
+
+### Get Third Page (1 post per page)
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPaginatedPosts($first: Int!, $after: String) { posts(first: $first, after: $after) { nodes { id title excerpt } pageInfo { hasNextPage endCursor } } }",
+    "variables": {
+        "first": 1,
+        "after": "YXJyYXljb25uZWN0aW9uOjU5"
+    }
+}
+
+### Get Total Page Number (1 post per page)
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPostsCounts($first: Int!) { posts(first: $first) { pageInfo { total } } }",
+    "variables": {
+        "first": 1
+    }
+}

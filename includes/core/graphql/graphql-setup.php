@@ -63,3 +63,8 @@ if (! class_exists('\WPGraphQL')) {
 
     return;
 }
+
+// Add total posts pagination count to GraphQL schema if enabled
+if (defined('GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED') && GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED) {
+    require_once get_template_directory() . '/includes/core/graphql/graphql-pagination.php';
+}

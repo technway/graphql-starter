@@ -9,17 +9,32 @@
  * @package GraphQL_Starter
  */
 
-// Load WPGraphQL setup
+/**
+ * Define if post count functionality is enabled. Default is true.
+ * 
+ * This constant controls whether the total pages count is available in GraphQL queries.
+ * When enabled (true), the 'total' field is added to pageInfo in post queries.
+ * This is useful for pagination UI and displaying total pages.
+ * 
+ * Example query when enabled:
+ * query GetPostsCounts($first: Int!) {
+ *   posts(first: $first) {
+ *     pageInfo {
+ *       total
+ *     }
+ *   }
+ * }
+ * 
+ * read docs/blog-posts.md for more information.
+ */
+define('GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED', true);
+
+// Then load WPGraphQL setup
 require_once get_template_directory() . '/includes/core/graphql/graphql-setup.php';
 
-// Stop loading if WPGraphQL is missing
+// Stop loading if WPGraphQL Plugin is missing
 if (defined('WPGRAPHQL_IS_MISSING')) {
     return;
-}
-
-// Define the theme version
-if (! defined('_GRAPHQL_STARTER_VERSION')) {
-    define('_GRAPHQL_STARTER_VERSION', '1.0.0');
 }
 
 /**
@@ -84,6 +99,7 @@ function graphql_starter_redirect_frontend()
     }
 
     // Don't redirect admin, AJAX, or GraphQL requests
+
     if (is_admin() || wp_doing_ajax() || defined('GRAPHQL_REQUEST')) {
         return;
     }
