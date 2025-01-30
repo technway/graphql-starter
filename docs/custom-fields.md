@@ -22,7 +22,7 @@ This feature is disabled by default. To enable it, set the `GRAPHQL_STARTER_ENAB
 
 > Note: Please enable this feature by setting the `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` constant to true in the `config.php` file.
 
-### Required Parameters
+## Required Parameters
 When registering a custom field, the following parameters are required:
 
 ```php
@@ -33,7 +33,7 @@ CustomField::register([
 ]);
 ```
 
-### Optional Parameters
+## Optional Parameters
 ```php
 CustomField::register([
     // Optional parameters with their defaults
@@ -44,9 +44,9 @@ CustomField::register([
 ]);
 ```
 
-### Input Types
+## Input Types
 
-#### 1. Text Input (Default)
+### 1. Text Input (Default)
 ```php
 CustomField::register([
     'id' => 'text_field',
@@ -63,7 +63,7 @@ CustomField::register([
 ]);
 ```
 
-#### 2. Email Input
+### 2. Email Input
 ```php
 CustomField::register([
     'id' => 'email_field',
@@ -78,7 +78,7 @@ CustomField::register([
 ]);
 ```
 
-#### 3. URL Input
+### 3. URL Input
 ```php
 CustomField::register([
     'id' => 'website',
@@ -93,7 +93,7 @@ CustomField::register([
 ]);
 ```
 
-#### 4. Number Input
+### 4. Number Input
 ```php
 CustomField::register([
     'id' => 'quantity',
@@ -110,7 +110,7 @@ CustomField::register([
 ]);
 ```
 
-#### 5. Telephone Input
+### 5. Telephone Input
 ```php
 CustomField::register([
     'id' => 'phone',
@@ -126,7 +126,7 @@ CustomField::register([
 ]);
 ```
 
-#### 6. Date Input
+### 6. Date Input
 ```php
 CustomField::register([
     'id' => 'event_date',
@@ -142,7 +142,7 @@ CustomField::register([
 ]);
 ```
 
-#### 7. Textarea
+### 7. Textarea
 ```php
 CustomField::register([
     'id' => 'description',
@@ -158,7 +158,7 @@ CustomField::register([
 ]);
 ```
 
-#### 8. Radio Buttons
+### 8. Radio Buttons
 ```php
 CustomField::register([
     'id' => 'size',
@@ -176,7 +176,7 @@ CustomField::register([
 ]);
 ```
 
-#### 9. Checkboxes (Multiple Selection)
+### 9. Checkboxes (Multiple Selection)
 ```php
 CustomField::register([
     'id' => 'features',
@@ -195,7 +195,7 @@ CustomField::register([
 ]);
 ```
 
-### GraphQL Integration
+## GraphQL Integration
 
 All custom post types and fields registered using the `CustomPostType` and `CustomField` classes are automatically exposed in the WPGraphQL schema. This allows you to query these custom post types and their associated metadata using GraphQL.
 
@@ -212,7 +212,7 @@ Example Query:
 }
 ```
 
-### Best Practices
+## Best Practices
 
 1. **Use Meaningful Slugs:** Ensure the slugs for CPTs and custom fields are descriptive and unique to avoid conflicts.
 2. **Keep it Organized:** Register all custom post types and fields in the `custom-post-types.php` and `custom-fields.php` files, respectively.
@@ -220,7 +220,7 @@ Example Query:
 4. **Validation**: Use appropriate input types for built-in validation (email, url, tel, etc.)
 5. **GraphQL Considerations**: Consider whether fields should be exposed in GraphQL
 
-### Error Handling
+## Error Handling
 
 The CustomField class will throw an `InvalidArgumentException` if:
 - Required parameters are missing

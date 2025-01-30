@@ -22,9 +22,16 @@
   - [Prerequisites](#prerequisites)
   - [Steps](#steps)
 - [Theme Configuration](#theme-configuration)
-  - [`theme.config.php`](#themeconfigphp)
-    - [Configuration Constants](#configuration-constants)
-    - [Example Usage](#example-usage)
+  - [Configuration Constants](#configuration-constants)
+  - [Example Usage](#example-usage)
+- [Directory Structure](#directory-structure)
+  - [`includes/` Directory](#includes-directory)
+    - [`core/` Directory](#core-directory)
+  - [`docs/` Directory](#docs-directory)
+  - [`testing-graphql/` Directory](#testing-graphql-directory)
+- [Usage](#usage)
+- [Theme Renaming](#theme-renaming)
+  - [Script Usage](#script-usage)
 - [License](#license)
 - [Support](#support)
 - [Credits](#credits)
@@ -82,21 +89,19 @@ Ensure that your environment meets the following requirements:
 
 ## Theme Configuration
 
-### `theme.config.php`
 The `theme.config.php` file contains essential configuration constants that control various features of the theme. These constants determine which functionalities are enabled or disabled.
 
-#### Configuration Constants
+### Configuration Constants
 
 | Constant | Type | Default | Description |
 |----------|------|---------|-------------|
-| `GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES` | boolean | `false` | Controls whether custom post types are enabled. When true, allows registration of custom post types. See `docs/custom-post-types.md` for details. |
-| `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` | boolean | `false` | Controls whether custom fields are enabled. When true, allows registration of custom fields. See `docs/custom-fields.md` for details. |
-| `GRAPHQL_STARTER_LIKE_POSTS_ENABLED` | boolean | `false` | Enables/disables the post likes system. When true, activates like/unlike queries and mutations. See `docs/blog-posts.md` for details. |
-| `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` | boolean | `true` | Controls whether total pages count is available in GraphQL queries. When true, adds 'total' field to pageInfo in post queries. Useful for pagination UI. |
+| `GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES` | boolean | `false` | Controls whether custom post types are enabled. When true, allows registration of custom post types. See [`docs/custom-post-types.md`](docs/custom-post-types.md) for details. |
+| `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` | boolean | `false` | Controls whether custom fields are enabled. When true, allows registration of custom fields. See [`docs/custom-fields.md`](docs/custom-fields.md) for details. |
+| `GRAPHQL_STARTER_LIKE_POSTS_ENABLED` | boolean | `false` | Enables/disables the post likes system. When true, activates like/unlike queries and mutations. See [`docs/blog-posts.md`](docs/blog-posts.md) for details. |
+| `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` | boolean | `true` | Controls whether total pages count is available in GraphQL queries. When true, adds 'total' field to pageInfo in post queries. Useful for pagination UI. See [`docs/blog-posts.md`](docs/blog-posts.md) for details. |
 
-#### Example Usage
+### Example Usage
 When `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` is true, you can query post pagination counts.
-```
 
 For detailed information about each feature. See the [`docs/`](./docs/) directory.
 

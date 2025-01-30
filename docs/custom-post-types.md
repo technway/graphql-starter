@@ -18,9 +18,9 @@ This feature is disabled by default. To enable it, set the `GRAPHQL_STARTER_ENAB
 
 > Note: Please enable this feature by setting the `GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES` constant to true in the `config.php` file.
 
-### Registering Custom Post Types
+## Registering Custom Post Types
 
-#### Example 1: Basic Post Type
+### Example 1: Basic Post Type
 ```php
 CustomPostType::register(['slug' => 'project']);
 ```
@@ -31,7 +31,7 @@ This creates a custom post type with the slug `project`. When only providing the
 - Menu name will default to the plural name
 - All other settings will use sensible defaults for a typical post type
 
-#### Example 2: Post Type with Custom Settings
+### Example 2: Post Type with Custom Settings
 ```php
 CustomPostType::register([
     'slug' => 'event',
@@ -45,7 +45,7 @@ CustomPostType::register([
 ```
 This registers a post type with custom settings that override the automatic defaults.
 
-#### Default Behavior
+### Default Behavior
 The `CustomPostType` class will automatically:
 - Format the slug for display (e.g., 'team_member' becomes 'Team Member')
 - Generate plural forms (adding 's' to singular name)
@@ -55,7 +55,7 @@ The `CustomPostType` class will automatically:
 
 You only need to specify custom settings when you want to override these defaults.
 
-#### Available Configuration Options
+### Available Configuration Options
 When registering a custom post type, you can use the following options:
 
 ```php
@@ -115,9 +115,9 @@ CustomPostType::register([
 ]);
 ```
 
-#### Option Details
+### Option Details
 
-##### Basic Settings
+#### Basic Settings
 - `slug`: (Required) The post type identifier. Should be lowercase, no spaces.
 - `singular_name`: Human-readable singular name (auto-generated from slug if not provided).
 - `plural_name`: Human-readable plural name (auto-generated from singular name if not provided).
@@ -125,7 +125,7 @@ CustomPostType::register([
 - `has_archive`: Whether there should be post type archive pages.
 - `hierarchical`: Enables parent/child relationships (like Pages).
 
-##### Features Support
+#### Features Support
 The `supports` array can include any of these values:
 - `title`: Enable title field
 - `editor`: Enable content editor
@@ -135,15 +135,15 @@ The `supports` array can include any of these values:
 - `custom-fields`: Enable custom fields
 - `page-attributes`: Enable menu order and page parent options
 
-##### Admin UI Options
+#### Admin UI Options
 - `menu_icon`: Dashicons helper class or URL to custom icon
 - `menu_position`: Where menu appears in admin sidebar (5-100)
 
-##### Visibility Settings
+#### Visibility Settings
 - `publicly_queryable`: Whether posts are queryable on the front end
 - `exclude_from_search`: Whether to exclude from search results
 
-##### API Integration
+#### API Integration
 - `show_in_rest`: Defaults to `true`.
 - `show_in_graphql`: Enable in GraphQL API (defaults to `true`)
 - `graphql_single_name`: GraphQL singular name (defaults to lowercase singular_name)
