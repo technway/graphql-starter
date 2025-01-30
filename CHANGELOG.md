@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.1](https://github.com/technway/graphql-starter/compare/v1.2.0...v1.2.1) (2025-01-30)
+
+
+### Bug Fixes
+
+* **composer:** resolve version mismatch between composer.json and Git tags ([6f264c9](https://github.com/technway/graphql-starter/commit/6f264c91298889c0152cad87231090b4e8153562))
+
+
+### Miscellaneous Chores
+
+* **main:** release 1.2.0 ([17bd0c7](https://github.com/technway/graphql-starter/commit/17bd0c7296530d87bd1d4da19cfb25455e8c3f5b))
+
 ## [1.2.0](https://github.com/technway/graphql-starter/compare/v1.1.0...v1.2.0) (2025-01-30)
 
 
