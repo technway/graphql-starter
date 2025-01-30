@@ -17,10 +17,10 @@
   - [Core Capabilities](#core-capabilities)
   - [Custom Post Types and Fields](#custom-post-types-and-fields)
   - [GraphQL Capabilities](#graphql-capabilities)
-  - [Additional Features](#additional-features)
 - [Installation](#installation)
   - [Using Composer (Recommended)](#using-composer-recommended)
   - [Manual Installation](#manual-installation)
+  - [Rename Theme](#rename-theme)
 - [Theme Configuration](#theme-configuration)
   - [Configuration Constants](#configuration-constants)
   - [Example Usage](#example-usage)
@@ -29,6 +29,10 @@
     - [`core/` Directory](#core-directory)
   - [`docs/` Directory](#docs-directory)
   - [`testing-graphql/` Directory](#testing-graphql-directory)
+- [Usage](#usage)
+- [License](#license)
+- [Support](#support)
+- [Credits](#credits)
 
 
 **This lightweight and secure solution is ideal for:**
@@ -36,31 +40,31 @@
 - Headless frontend applications
 - Scenarios where content management is handled through the WordPress admin interface
 
-The theme is **read-only**, ensuring enhanced security and simplicity by disabling mutations/write operations.
+The theme has no authentication system, anonymous access is allowed to specific GraphQL queries and mutations. The following mutations are available:
+- Comment creation
+- Post like toggling
 
 ## Features
 
 ### Core Capabilities
-- **Headless WordPress API:** Designed to serve as a **read-only GraphQL endpoint** for seamless integration with modern frontend frameworks like React, Vue, or Angular.
-- **Focus on Data Retrieval:** Excludes mutations (write operations) to enhance security and simplify implementation.
+- **Headless WordPress API:** Designed to serve as a GraphQL API for seamless integration with modern frontend frameworks like React, Vue, or Angular.
 
 ### Custom Post Types and Fields
 - Easy-to-use `CustomPostType` and `CustomField` classes for registering and managing post types and custom fields.
 - Automatically integrates custom post types and fields into the GraphQL schema.
 - Flexible configuration options for easy customization
 
+> Check the [`docs/custom-post-types.md`](docs/custom-post-types.md) and [`docs/custom-fields.md`](docs/custom-fields.md) files for more information on registering custom post types and custom fields.
+
 ### GraphQL Capabilities
-- **Read-Only Operations:**
+- **Read Operations Examples:**
   - Query post types
   - Retrieve posts and their data
   - Access custom fields
-- No mutations (create/update/delete)
-- No authentication system required (read-only operations)
-
-### Additional Features
-- Built-in logging for debugging and monitoring
-- Support for administrative operations like post type deletion
-- Fully compatible with [WPGraphQL](https://wordpress.org/plugins/wp-graphql/)
+- **Write Operations Examples:**
+  - Create comments on posts
+  - Toggle post likes
+- No authentication required for public operations (Anonymous access).
 
 ---
 
@@ -79,6 +83,20 @@ composer create-project technway/graphql-starter your-theme-name --no-dev
 2. Upload the theme folder to your WordPress installation directory under `/wp-content/themes/`.
 3. Activate the theme via the WordPress admin panel under **Appearance > Themes**.
 4. Install and activate the [WPGraphQL plugin](https://wordpress.org/plugins/wp-graphql/).
+
+### Rename Theme
+
+Use the `rename-theme.php` script to rename the theme. The script updates all references across relevant files while preserving formatting.
+
+**Run the script from the root of the theme directory:**
+```bash
+php ./scripts/rename-theme.php "Your New Theme Name"
+```
+
+Example:
+```bash
+php ./scripts/rename-theme.php "My Custom GraphQL Theme"
+```
 
 ---
 
@@ -121,7 +139,7 @@ graphql-starter/                   # Root directory of the theme
 ├── scripts/                       # Utility scripts for automation
 │   ├── rename-theme.php           # Script to rename theme references
 ├── testing-graphql/               # GraphQL query test files for debugging
-│   ├── example.http               # Example HTTP requests for GraphQL queries
+│   ├── *.http                     # HTTP files for testing GraphQL queries and mutations
 │   ├── testing-graphql.md         # Documentation for testing GraphQL
 ├── docs/                          # Documentation files for the theme
 ├── functions.php                  # Main WordPress functions file
@@ -139,4 +157,29 @@ The `core/` directory contains the reusable classes used to register custom post
 The `docs/` directory contains additional detailed documentation files about the theme, its architecture, and usage examples. Refer to [`docs/usage.md`](docs/usage.md) for more information on registering custom post types and custom fields.
 
 ### `testing-graphql/` Directory
-The `testing-graphql/` directory contains a `.http`
+The `testing-graphql/` directory contains a `.http` file for testing GraphQL queries. Refer to [`testing-graphql.md`](testing-graphql/testing-graphql.md) for more information on testing GraphQL queries.
+
+---
+
+## Usage
+
+- Read the [`blog-posts.md`](docs/blog-posts.md) file for more information on get posts in different scenarios and getting or toggling likes.
+- Read the [`custom-post-types.md`](docs/custom-post-types.md) file for more information on registering custom post types.
+- Read the [`custom-fields.md`](docs/custom-fields.md) file for more information on registering custom fields.
+
+---
+
+## License
+This theme is licensed under the GNU General Public License v2 or later (GPL-2.0). See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Support
+For support and contributions, visit the [Technway GitHub repository](https://github.com/technway/graphql-starter).
+
+---
+
+## Credits
+The GraphQL Starter Theme is built with ❤️ and maintained by **[Technway](https://technway.biz)**. Special thanks to the creators of [WPGraphQL](https://www.wpgraphql.com/) for their excellent plugin.
+
+Contributions are welcome! Feel free to fork the repository and submit pull requests.
