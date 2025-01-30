@@ -19,8 +19,8 @@
   - [GraphQL Capabilities](#graphql-capabilities)
   - [Additional Features](#additional-features)
 - [Installation](#installation)
-  - [Prerequisites](#prerequisites)
-  - [Steps](#steps)
+  - [Using Composer (Recommended)](#using-composer-recommended)
+  - [Manual Installation](#manual-installation)
 - [Theme Configuration](#theme-configuration)
   - [Configuration Constants](#configuration-constants)
   - [Example Usage](#example-usage)
@@ -29,12 +29,6 @@
     - [`core/` Directory](#core-directory)
   - [`docs/` Directory](#docs-directory)
   - [`testing-graphql/` Directory](#testing-graphql-directory)
-- [Usage](#usage)
-- [Theme Renaming](#theme-renaming)
-  - [Script Usage](#script-usage)
-- [License](#license)
-- [Support](#support)
-- [Credits](#credits)
 
 
 **This lightweight and secure solution is ideal for:**
@@ -72,14 +66,16 @@ The theme is **read-only**, ensuring enhanced security and simplicity by disabli
 
 ## Installation
 
-### Prerequisites
-Ensure that your environment meets the following requirements:
-- PHP 7.2 or higher
-- WordPress 6.7 or later
-- [WPGraphQL](https://wordpress.org/plugins/wp-graphql/) plugin installed and activated
+### Using Composer (Recommended)
+```bash
+composer create-project technway/graphql-starter your-theme-name --no-dev
+```
 
-### Steps
-1. Download the theme from the [Technway repository](https://github.com/technway/graphql-starter).
+### Manual Installation
+1. Download/Clone the theme from the [Technway repository](https://github.com/technway/graphql-starter).
+   ```bash
+   git clone https://github.com/technway/graphql-starter.git
+   ```
 2. Upload the theme folder to your WordPress installation directory under `/wp-content/themes/`.
 3. Activate the theme via the WordPress admin panel under **Appearance > Themes**.
 4. Install and activate the [WPGraphQL plugin](https://wordpress.org/plugins/wp-graphql/).
@@ -143,45 +139,4 @@ The `core/` directory contains the reusable classes used to register custom post
 The `docs/` directory contains additional detailed documentation files about the theme, its architecture, and usage examples. Refer to [`docs/usage.md`](docs/usage.md) for more information on registering custom post types and custom fields.
 
 ### `testing-graphql/` Directory
-The `testing-graphql/` directory contains a `.http` file for testing GraphQL queries. Refer to [`testing-graphql.md`](testing-graphql/testing-graphql.md) for more information on testing GraphQL queries.
-
----
-
-## Usage
-
-- Read the [`blog-posts.md`](docs/blog-posts.md) file for more information on get posts in different scenarios and getting or toggling likes.
-- Read the [`custom-post-types.md`](docs/custom-post-types.md) file for more information on registering custom post types.
-- Read the [`custom-fields.md`](docs/custom-fields.md) file for more information on registering custom fields.
-
----
-
-## Theme Renaming
-Use the `rename-theme.php` script to rename the theme. The script updates all references across relevant files while preserving formatting.
-
-### Script Usage
-Run the script from the root of the theme directory:
-```bash
-php ./scripts/rename-theme.php "Your New Theme Name"
-```
-
-Example:
-```bash
-php ./scripts/rename-theme.php "My Custom GraphQL"
-```
-
----
-
-## License
-This theme is licensed under the GNU General Public License v2 or later (GPL-2.0). See the [LICENSE](LICENSE) file for details.
-
----
-
-## Support
-For support and contributions, visit the [Technway GitHub repository](https://github.com/technway/graphql-starter).
-
----
-
-## Credits
-The GraphQL Starter Theme is built with ❤️ and maintained by **[Technway](https://technway.biz)**. Special thanks to the creators of [WPGraphQL](https://www.wpgraphql.com/) for their excellent plugin.
-
-Contributions are welcome! Feel free to fork the repository and submit pull requests.
+The `testing-graphql/` directory contains a `.http`

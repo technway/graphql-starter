@@ -1,0 +1,29 @@
+{
+    "name": "technway/graphql-starter",
+    "description": "A specialized headless WordPress theme designed to function purely as a GraphQL API endpoint",
+    "type": "wordpress-theme",
+    "license": "GPL-2.0-or-later",
+    "version": "1.1.0",
+    "authors": [
+        {
+            "name": "Technway",
+            "homepage": "https://technway.biz"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "composer/installers": "^2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/technway/graphql-starter"
+        }
+    ]
+}
