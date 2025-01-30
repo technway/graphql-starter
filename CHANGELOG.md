@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/technway/graphql-starter/compare/v1.1.0...v1.2.0) (2025-01-30)
+
+
+### Features
+
+* Add Composer package support ([d891d5c](https://github.com/technway/graphql-starter/commit/d891d5ca8bf846f0188e5e5d59033a79f954797d))
+
+
+### Miscellaneous Chores
+
+* **main:** release 1.1.0 ([44014e9](https://github.com/technway/graphql-starter/commit/44014e936a2c609c336678c80fc02b30c5d78660))
+
 ## [1.1.0](https://github.com/technway/graphql-starter/compare/v1.0.0...v1.1.0) (2025-01-30)
 
 
