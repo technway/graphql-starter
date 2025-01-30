@@ -19,6 +19,9 @@ use GraphQL_Starter\Classes\CustomField;
  * 
  * For more examples with different field types,
  * see the `../docs/custom-fields.md` file.
+ * 
+ * Note: Please enable this feature by setting:
+ * `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` constant to true in the `config.php` file.
  */
 
 // Text field with placeholder

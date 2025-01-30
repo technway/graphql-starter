@@ -2,6 +2,8 @@
 
 Custom Post Types (CPTs) allow you to extend WordPress by adding new content types beyond the default ones (Posts, Pages, etc.). With the **GraphQL Starter** theme, you can register CPTs easily using the built-in `CustomPostType` class.
 
+This feature is disabled by default. To enable it, set the `GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES` constant to true in the `config.php` file.
+
 - [Registering Custom Post Types](#registering-custom-post-types)
   - [Example 1: Basic Post Type](#example-1-basic-post-type)
   - [Example 2: Post Type with Custom Settings](#example-2-post-type-with-custom-settings)
@@ -13,6 +15,8 @@ Custom Post Types (CPTs) allow you to extend WordPress by adding new content typ
     - [Admin UI Options](#admin-ui-options)
     - [Visibility Settings](#visibility-settings)
     - [API Integration](#api-integration)
+
+> Note: Please enable this feature by setting the `GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES` constant to true in the `config.php` file.
 
 ### Registering Custom Post Types
 

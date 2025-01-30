@@ -2,6 +2,7 @@
 <h1>Custom Fields</h1>
 
 Custom fields allow you to add metadata to your posts. The `CustomField` class in the theme makes it simple to create and manage custom fields for any post type.
+This feature is disabled by default. To enable it, set the `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` constant to true in the `config.php` file.
 
 - [Required Parameters](#required-parameters)
 - [Optional Parameters](#optional-parameters)
@@ -19,6 +20,7 @@ Custom fields allow you to add metadata to your posts. The `CustomField` class i
 - [Best Practices](#best-practices)
 - [Error Handling](#error-handling)
 
+> Note: Please enable this feature by setting the `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` constant to true in the `config.php` file.
 
 ### Required Parameters
 When registering a custom field, the following parameters are required:

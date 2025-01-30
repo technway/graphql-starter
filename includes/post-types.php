@@ -18,7 +18,10 @@ use GraphQL_Starter\Classes\CustomPostType;
  * 
  * For more examples with different post types options,
  * see the `../docs/custom-post-types.md` file.
+ * 
+ * Note: Please enable this feature by setting:
+ * `GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES` constant to true in the `config.php` file.
  */
 
 // Project post type
-CustomPostType::register(['slug' => 'project']);
+CustomPostType::register(['slug' => 'hello']);

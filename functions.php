@@ -9,35 +9,8 @@
  * @package GraphQL_Starter
  */
 
-/**
- * Define if posts likes functionality is enabled. Default is false.
- * 
- * This constant controls whether the post likes system is active.
- * When enabled (true), like/unlike queries and mutations are enabled.
- * 
- * read docs/blog-posts.md for more information.
- */
-define('GRAPHQL_STARTER_LIKE_POSTS_ENABLED', true);
-
-/**
- * Define if post count functionality is enabled. Default is true.
- * 
- * This constant controls whether the total pages count is available in GraphQL queries.
- * When enabled (true), the 'total' field is added to pageInfo in post queries.
- * This is useful for pagination UI and displaying total pages.
- * 
- * Example query when enabled:
- * query GetPostsCounts($first: Int!) {
- *   posts(first: $first) {
- *     pageInfo {
- *       total
- *     }
- *   }
- * }
- * 
- * read docs/blog-posts.md for more information.
- */
-define('GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED', true);
+// Load config
+require_once get_template_directory() . '/theme.config.php';
 
 // Then load WPGraphQL setup
 require_once get_template_directory() . '/includes/core/graphql/graphql-setup.php';
@@ -98,11 +71,6 @@ add_action('after_setup_theme', function () {
  */
 function graphql_starter_redirect_frontend() 
 {
-    // Add debug logging
-    if (defined('WP_DEBUG') && WP_DEBUG) {
-        error_log('Admin Redirect Check - Starting');
-    }
-
     // Don't redirect rest api requests
     if (defined('REST_REQUEST')) {
         return;
@@ -163,16 +131,31 @@ add_action('rest_api_init', 'graphql_starter_redirect_frontend');
 
 /**
  * Include required files
+ * 
+ * {file: required constant to import the file}
  */
 $required_files = [
-    '/includes/core/bootstrap/cpt-bootstrap.php',
-    '/includes/core/bootstrap/cf-bootstrap.php',
-    '/includes/post-types.php',
-    '/includes/custom-fields.php',
+    ['file' => '/includes/core/bootstrap/cpt-bootstrap.php'],
+    ['file' => '/includes/core/bootstrap/cf-bootstrap.php'],
+    [
+        'file' => '/includes/post-types.php',
+        'constant' => 'GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES'
+    ],
+    [
+        'file' => '/includes/custom-fields.php',
+        'constant' => 'GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS'
+    ],
 ];
 foreach ($required_files as $file) {
-    $file_path = get_template_directory() . $file;
+    $file_path = get_template_directory() . $file['file'];
+    $has_constant = isset($file['constant']) && defined($file['constant']);
+    $is_constant_true = $has_constant && $file['constant'];
+
+    error_log(print_r([$file_path, $has_constant, $is_constant_true], true));
+
     if (file_exists($file_path)) {
-        require_once $file_path;
+        if (!$has_constant || $is_constant_true) {
+            require_once $file_path;
+        }
     }
 }

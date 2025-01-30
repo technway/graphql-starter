@@ -14,3 +14,11 @@ Content-Type: application/json
 {
     "query": "query GetCustomPosts { contentTypes { nodes { name } } }"
 }
+
+### Get 'hellos' Custom Post Type. with 'greeting' custom field
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetHelloCustomPostType { hellos { nodes { id title content greeting } } }"
+}

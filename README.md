@@ -21,14 +21,10 @@
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
   - [Steps](#steps)
-- [Directory Structure](#directory-structure)
-  - [`includes/` Directory](#includes-directory)
-    - [`core/` Directory](#core-directory)
-  - [`docs/` Directory](#docs-directory)
-  - [`testing-graphql/` Directory](#testing-graphql-directory)
-- [Usage](#usage)
-- [Theme Renaming](#theme-renaming)
-  - [Script Usage](#script-usage)
+- [Theme Configuration](#theme-configuration)
+  - [`theme.config.php`](#themeconfigphp)
+    - [Configuration Constants](#configuration-constants)
+    - [Example Usage](#example-usage)
 - [License](#license)
 - [Support](#support)
 - [Credits](#credits)
@@ -83,6 +79,27 @@ Ensure that your environment meets the following requirements:
 
 ---
 
+
+## Theme Configuration
+
+### `theme.config.php`
+The `theme.config.php` file contains essential configuration constants that control various features of the theme. These constants determine which functionalities are enabled or disabled.
+
+#### Configuration Constants
+
+| Constant | Type | Default | Description |
+|----------|------|---------|-------------|
+| `GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES` | boolean | `false` | Controls whether custom post types are enabled. When true, allows registration of custom post types. See `docs/custom-post-types.md` for details. |
+| `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` | boolean | `false` | Controls whether custom fields are enabled. When true, allows registration of custom fields. See `docs/custom-fields.md` for details. |
+| `GRAPHQL_STARTER_LIKE_POSTS_ENABLED` | boolean | `false` | Enables/disables the post likes system. When true, activates like/unlike queries and mutations. See `docs/blog-posts.md` for details. |
+| `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` | boolean | `true` | Controls whether total pages count is available in GraphQL queries. When true, adds 'total' field to pageInfo in post queries. Useful for pagination UI. |
+
+#### Example Usage
+When `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` is true, you can query post pagination counts.
+```
+
+For detailed information about each feature. See the [`docs/`](./docs/) directory.
+
 ## Directory Structure
 
 ```
@@ -98,8 +115,8 @@ graphql-starter/                   # Root directory of the theme
 │   │   │   ├── cpt-bootstrap.php  # Initializes custom post types
 │   │   ├── graphql/               # Files specific to GraphQL setup
 │   │   │   ├── graphql-setup.php  # Configures GraphQL endpoints and settings
-│   ├── custom-fields.php          # Registers and manages custom fields
-│   ├── post-types.php             # Registers and manages custom post types
+│   │   ├── custom-fields.php          # Registers and manages custom fields
+│   │   ├── post-types.php             # Registers and manages custom post types
 ├── scripts/                       # Utility scripts for automation
 │   ├── rename-theme.php           # Script to rename theme references
 ├── testing-graphql/               # GraphQL query test files for debugging
@@ -108,6 +125,7 @@ graphql-starter/                   # Root directory of the theme
 ├── docs/                          # Documentation files for the theme
 ├── functions.php                  # Main WordPress functions file
 ├── index.php                      # Empty index file
+├── theme.config.php               # Theme configuration
 ```
 
 ### `includes/` Directory
