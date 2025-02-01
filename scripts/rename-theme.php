@@ -41,7 +41,7 @@ $starterThemeNameUnderscored = "GraphQL_Starter";
 // Define files to update
 $filesToUpdate = [
     'functions.php',
-    'config.php',
+    'theme-config.php',
     'readme.txt',
     'style.css',
     'README.md',
