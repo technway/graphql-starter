@@ -208,12 +208,6 @@ class CustomField
      */
     private static function setupGraphQL($args)
     {
-
-        if (empty($args['show_in_graphql'])) {
-            // error_log('CustomField::setupGraphQL: show_in_graphql is false');
-            return;
-        }
-
         add_action('graphql_register_types', function () use ($args) {
             foreach ($args['post_types'] as $post_type) {
                 register_graphql_field($post_type, $args['id'], [

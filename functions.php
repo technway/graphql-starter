@@ -119,10 +119,6 @@ function graphql_starter_redirect_frontend()
     // Perform safe redirect with nonce
     $admin_url = wp_nonce_url(admin_url(), 'graphql_starter_redirect');
 
-    if (defined('WP_DEBUG') && WP_DEBUG) {
-        error_log('Admin Redirect - Redirecting to: ' . $admin_url);
-    }
-
     wp_safe_redirect($admin_url, 302);
     exit;
 }
@@ -150,8 +146,6 @@ foreach ($required_files as $file) {
     $file_path = get_template_directory() . $file['file'];
     $has_constant = isset($file['constant']) && defined($file['constant']);
     $is_constant_true = $has_constant && $file['constant'];
-
-    error_log(print_r([$file_path, $has_constant, $is_constant_true], true));
 
     if (file_exists($file_path)) {
         if (!$has_constant || $is_constant_true) {
