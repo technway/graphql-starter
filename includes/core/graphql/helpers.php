@@ -72,7 +72,4 @@ function graphql_starter_log_like_action(int $post_id, string|int $user_identifi
         'ip' => $_SERVER['REMOTE_ADDR'],
         'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? ''
     ];
-    
-    // Log to file or database as needed
-    error_log(wp_json_encode($log_data));
 }
