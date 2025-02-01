@@ -21,7 +21,7 @@ use GraphQL_Starter\Classes\CustomField;
  * see the `../docs/custom-fields.md` file.
  * 
  * Note: Please enable this feature by setting:
- * `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` constant to true in the `theme.config.php` file.
+ * `GRAPHQL_STARTER_CUSTOM_FIELDS_ENABLED` constant to true in the `theme.config.php` file.
  */
 
 
