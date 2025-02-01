@@ -383,7 +383,7 @@ query GetPostsCounts($first: Int!) {
 - Valid range for `first`: 1-100 posts per page
 - `total` represents total number of pages
 - Example calculation: 3 total posts with 1 post per page = 3 pages
-- To use the `total` ensure that the constant `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` is set to `true` in the `theme.config.php` file.
+- To use the `total` ensure that the constant `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` is set to `true` in the `config.php` file.
 
 #### Error Cases:
 - `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` is set to `false`: "Cannot query field \"total\" on type \"RootQueryToPostConnectionPageInfo\"."
