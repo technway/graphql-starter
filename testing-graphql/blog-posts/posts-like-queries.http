@@ -2,7 +2,7 @@
 # Read the testing-graphql.md file to learn how to run the queries or add new tests
 
 # If you got `"message": "Cannot query field \"likeCount\" on type \"Post\"."` error,
-# you need to enable the `define('GRAPHQL_STARTER_LIKE_POSTS_ENABLED', true);` in the config.php file.
+# you need to enable the `define('GRAPHQL_STARTER_LIKE_POSTS_ENABLED', true);` in the `theme.config.php` file.
 
 @baseURL = {{$dotenv WP_BASE_URL}}
 
