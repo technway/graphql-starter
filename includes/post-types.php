@@ -20,7 +20,7 @@ use GraphQL_Starter\Classes\CustomPostType;
  * see the `../docs/custom-post-types.md` file.
  * 
  * Note: Please enable this feature by setting:
- * `GRAPHQL_STARTER_CUSTOM_POST_TYPES_ENABLED` constant to true in the `theme.config.php` file.
+ * `GRAPHQL_STARTER_ENABLE_CUSTOM_POST_TYPES` constant to true in the `config.php` file.
  */
 
 // Project post type
