@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/technway/graphql-starter/compare/v1.2.1...v1.3.0) (2025-02-02)
+
+
+### Features
+
+* add new constant for config and refactor code ([295e2e6](https://github.com/technway/graphql-starter/commit/295e2e6b346dedbe6f1265a7cbecfcc6ed9ac881))
+
+
+### Miscellaneous Chores
+
+* **composer:** add .gitattributes for a smaller package ([28ade23](https://github.com/technway/graphql-starter/commit/28ade2350117f3f69e59122ca13747aab60f437b))
+
 ## [1.2.1](https://github.com/technway/graphql-starter/compare/v1.2.0...v1.2.1) (2025-01-30)
 
 
