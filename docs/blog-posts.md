@@ -32,6 +32,10 @@ This documentation covers the blog features integrated with the **GraphQL Starte
   - [Like Count Storage](#like-count-storage)
   - [Testing](#testing-2)
   - [Cookie Format](#cookie-format)
+- [Social Sharing](#social-sharing)
+  - [Usage](#usage)
+  - [Available Platforms](#available-platforms)
+  - [GraphQL Query Example](#graphql-query-example)
 
 ## Main Posts Queries
 
@@ -536,5 +540,80 @@ Test endpoints using the provided HTTP files:
     "secure": true,
     "httpOnly": true,
     "sameSite": "Strict"
+}
+```
+
+---
+
+## Social Sharing
+
+The theme includes built-in support for generating social sharing URLs for posts.
+
+### Usage
+
+To use it, **follow these steps to enable social sharing**:
+
+1. Open [`theme.config.php`](../theme.config.php).
+2. Set `GRAPHQL_STARTER_SOCIAL_SHARE_ENABLED` to `true`.
+
+### Available Platforms
+
+- Facebook
+- Twitter
+- LinkedIn
+- WhatsApp
+- Telegram
+- Email
+- Direct link copying
+
+### GraphQL Query Example
+
+To get sharing URLs for a post, include the `socialShare` field in your query:
+
+```graphql
+# Query
+query GetPostWithSharing($id: ID!) { 
+    post(id: $id, idType: DATABASE_ID) {
+        id
+        title
+        socialShare {
+            facebook
+            twitter
+            linkedin
+            whatsapp
+            telegram
+            email
+            copyLink
+        }
+    }
+}
+
+# Variables
+{
+    "id": "1"
+}
+```
+
+**Response Example:**
+
+The `GetPostWithSharing` query will return sharing URLs for each platform:
+
+```graphql
+{
+    "data": {
+        "post": {
+            "id": "cG9zdDox",
+            "title": "Hello World",
+            "socialShare": {
+            "facebook": "https://www.facebook.com/sharer.php?u=https%3A%2F%2Fexample.com%2Fhello-world&quote=Hello%20World",
+            "twitter": "https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fhello-world&text=Hello%20World",
+            "linkedin": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexample.com%2Fhello-world",
+            "whatsapp": "https://wa.me/?text=Hello%20World%20https%3A%2F%2Fexample.com%2Fhello-world",
+            "telegram": "https://t.me/share/url?url=https%3A%2F%2Fexample.com%2Fhello-world&text=Hello%20World",
+            "email": "mailto:?subject=Hello%20World&body=https%3A%2F%2Fexample.com%2Fhello-world",
+            "copyLink": "https://example.com/hello-world"
+            }
+        }
+    }
 }
 ```

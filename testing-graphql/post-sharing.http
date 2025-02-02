@@ -1,0 +1,28 @@
+# Read the testing-graphql.md file to learn how to run the queries or add new tests
+
+@baseURL = {{$dotenv WP_BASE_URL}}
+
+# Note: These queries will only work if:
+# 1. The social sharing constant is enabled in the `theme.config.php` file
+
+### Get Post with Social Sharing URLs
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPostWithSharing($id: ID!) { post(id: $id, idType: DATABASE_ID) { id title socialShare { facebook twitter linkedin whatsapp telegram email copyLink } } }",
+    "variables": {
+        "id": "1"
+    }
+}
+
+### Get Multiple Posts with Social Sharing URLs
+POST {{baseURL}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query GetPostsWithSharing($first: Int!) { posts(first: $first) { nodes { id title socialShare { facebook twitter linkedin whatsapp telegram email copyLink } } } }",
+    "variables": {
+        "first": 2
+    }
+}

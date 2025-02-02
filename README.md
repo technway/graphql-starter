@@ -61,6 +61,8 @@ The theme has no authentication system, anonymous access is allowed to specific 
   - Query post types
   - Retrieve posts and their data
   - Access custom fields
+  - Social sharing URLs for Posts
+
 - **Write Operations Examples:**
   - Create comments on posts
   - Toggle post likes
@@ -113,6 +115,7 @@ The `theme.config.php` file contains essential configuration constants that cont
 | `GRAPHQL_STARTER_ENABLE_CUSTOM_FIELDS` | boolean | `false` | Controls whether custom fields are enabled. When true, allows registration of custom fields. See [`docs/custom-fields.md`](docs/custom-fields.md) for details. |
 | `GRAPHQL_STARTER_LIKE_POSTS_ENABLED` | boolean | `false` | Enables/disables the post likes system. When true, activates like/unlike queries and mutations. See [`docs/blog-posts.md`](docs/blog-posts.md) for details. |
 | `GRAPHQL_STARTER_POST_PAGES_COUNT_ENABLED` | boolean | `true` | Controls whether total pages count is available in GraphQL queries. When true, adds 'total' field to pageInfo in post queries. Useful for pagination UI. See [`docs/blog-posts.md`](docs/blog-posts.md) for details. |
+| `GRAPHQL_STARTER_SOCIAL_SHARE_ENABLED` | boolean | `false` | Controls whether social sharing URLs are available in post queries. See [`docs/blog-posts.md`](docs/blog-posts.md) for details |
 | `GRAPHQL_STARTER_REDIRECT_FRONTEND_ENABLED` | boolean | `true` | Controls whether the frontend is redirected to the admin dashboard. When true, the frontend is redirected to the admin dashboard.|
 
 ### Example Usage
