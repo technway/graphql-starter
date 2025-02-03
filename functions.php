@@ -35,6 +35,10 @@ graphql_starter_load_required_files([
         'file' => '/includes/custom-fields.php',
         'constant' => 'GRAPHQL_STARTER_CUSTOM_FIELDS_ENABLED'
     ],
+    [
+        'file' => '/includes/core/graphql/social-share-graphql.php',
+        'constant' => 'GRAPHQL_STARTER_SOCIAL_SHARE_ENABLED'
+    ]
 ]);
 
 /**

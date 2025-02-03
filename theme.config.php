@@ -58,3 +58,13 @@ define('GRAPHQL_STARTER_CUSTOM_POST_TYPES_ENABLED', false);
  * read docs/custom-fields.md for more information.
  */
 define('GRAPHQL_STARTER_CUSTOM_FIELDS_ENABLED', false);
+
+/**
+ * Define if posts social sharing functionality is enabled. Default is false.
+ * 
+ * This constant controls whether the posts social sharing functionality is active.
+ * When enabled (true), sharing URLs are available in post queries.
+ * 
+ * read docs/blog-posts.md for more information.
+ */
+define('GRAPHQL_STARTER_SOCIAL_SHARE_ENABLED', false);
