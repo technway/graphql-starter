@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/technway/graphql-starter/compare/v1.3.0...v1.4.0) (2025-02-03)
+
+
+### Features
+
+* **GraphQL:** add social sharing URLs to posts ([841e262](https://github.com/technway/graphql-starter/commit/841e262a71763217a5c08fe77b994801d2db03da))
+
 ## [1.3.0](https://github.com/technway/graphql-starter/compare/v1.2.1...v1.3.0) (2025-02-02)
 
 
