@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="https://i.ibb.co/QMrspvp/graphql-starter-logo.png" alt="GraphQL Starter Logo">
+<img src="https://i.ibb.co/QMrspvp/graphql-starter-logo.png](https://github.com/user-attachments/assets/68b4f214-5916-49a9-ba76-eef66d663c3c)" alt="GraphQL Starter Logo">
+
 <h1>GraphQL Starter</h1>
 
 <p>The <strong>GraphQL Starter Theme</strong> is a specialized headless WordPress theme designed to function purely as a GraphQL API endpoint. It eliminates traditional frontend rendering and focuses solely on providing a clean and efficient GraphQL API interface.</p>
