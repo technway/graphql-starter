@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://i.ibb.co/QMrspvp/graphql-starter-logo.png](https://github.com/user-attachments/assets/68b4f214-5916-49a9-ba76-eef66d663c3c)" alt="GraphQL Starter Logo">
+<img src="https://i.ibb.co/QMrspvp/graphql-starter-logo.png" alt="GraphQL Starter Logo">
 
 <h1>GraphQL Starter</h1>
 
